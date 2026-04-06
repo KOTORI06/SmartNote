@@ -1,1 +1,21 @@
-spring.application.name=SmartNote
+spring:
+  application:
+    name: smart_note
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/smart_note?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8}
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    #????
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #??????????????????????????
+  type-aliases-package: com.smartnote.entity
+  #?? MyBatis Mapper XML ?????
+  #classpath: - ??????????? src/main/resources ???
+  #mapper/ - resources ?? mapper ???
+  #*.xml - ???????????? .xml ??
+  mapper-locations: classpath:mapper/*.xml

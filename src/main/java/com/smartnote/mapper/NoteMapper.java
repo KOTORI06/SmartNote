@@ -1,4 +1,7 @@
 package com.smartnote.mapper;
 
-public class NoteMapper {
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.smartnote.entity.Note;
+
+public interface NoteMapper extends BaseMapper<Note> {
 }

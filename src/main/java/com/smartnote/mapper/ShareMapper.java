@@ -1,4 +1,8 @@
 package com.smartnote.mapper;
 
-public class ShareMapper {
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.smartnote.entity.NotePermission;
+
+public interface ShareMapper extends BaseMapper<NotePermission> {
+
 }
