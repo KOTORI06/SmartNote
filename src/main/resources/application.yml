@@ -19,3 +19,8 @@ mybatis-plus:
   #mapper/ - resources ?? mapper ???
   #*.xml - ???????????? .xml ??
   mapper-locations: classpath:mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
