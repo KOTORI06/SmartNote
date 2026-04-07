@@ -34,7 +34,7 @@ public class JwtUtil {
     /**
      HTTP 请求头名称
      */
-    private static final String HEADER_STRING = "Authorization";
+    public static final String HEADER_STRING = "Authorization";
     /**
      JWT 中的主题字段名（存储用户ID）
      */

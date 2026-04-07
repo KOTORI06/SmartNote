@@ -45,7 +45,7 @@ public class JwtInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 1. 从请求头获取 Authorization 字段
-        String authHeader = request.getHeader("Authorization");
+        String authHeader = request.getHeader(JwtUtil.HEADER_STRING);
 
         // 2. 提取 Token（去除 "Bearer " 前缀）
         String token = JwtUtil.extractTokenFromHeader(authHeader);

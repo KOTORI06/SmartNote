@@ -90,6 +90,11 @@
             <artifactId>commons-codec</artifactId>
             <version>1.16.1</version>
         </dependency>
+        <!-- Spring Security Crypto（提供 BCrypt） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
     </dependencies>
 
