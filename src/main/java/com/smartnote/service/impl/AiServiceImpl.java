@@ -1,4 +1,10 @@
 package com.smartnote.service.impl;
 
-public class AiServiceImpl {
+import com.smartnote.service.AiService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
+public class AiServiceImpl implements AiService {
 }

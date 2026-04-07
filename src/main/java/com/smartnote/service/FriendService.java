@@ -1,4 +1,4 @@
 package com.smartnote.service;
 
-public class FriendService {
+public interface FriendService {
 }

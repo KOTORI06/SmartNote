@@ -1,4 +1,11 @@
 package com.smartnote.service.impl;
 
-public class ShareServiceImpl {
+import com.smartnote.service.ShareService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
+public class ShareServiceImpl implements ShareService {
+
 }

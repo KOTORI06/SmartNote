@@ -1,4 +1,4 @@
 package com.smartnote.service;
 
-public class ShareService {
+public interface ShareService {
 }

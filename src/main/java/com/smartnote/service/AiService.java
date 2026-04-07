@@ -1,4 +1,4 @@
 package com.smartnote.service;
 
-public class AiService {
+public interface AiService {
 }

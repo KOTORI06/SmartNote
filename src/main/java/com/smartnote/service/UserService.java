@@ -1,4 +1,8 @@
 package com.smartnote.service;
 
-public class UserService {
+import com.smartnote.entity.User;
+
+public interface UserService {
+
+
 }

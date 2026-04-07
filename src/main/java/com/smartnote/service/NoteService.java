@@ -1,4 +1,4 @@
 package com.smartnote.service;
 
-public class NoteService {
+public interface NoteService {
 }

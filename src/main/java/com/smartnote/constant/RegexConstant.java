@@ -18,4 +18,9 @@ public class RegexConstant {
     //密码：8-20位，必须包含字母和数字，可选特殊字符
     public static final String PASSWORD = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d@#$%^&+=]{8,20}$";
     public static final String PASSWORD_MESSAGE = "密码格式不正确（8-20位，需包含字母和数字）";
+
+    //邮箱或手机号：标准邮箱格式或11位手机号
+    public static final String EMAIL_OR_PHONE = "(^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$)|(^1[3-9]\\d{9}$)";
+    public static final String EMAIL_OR_PHONE_MESSAGE = "请输入正确的邮箱或手机号";
+
 }
