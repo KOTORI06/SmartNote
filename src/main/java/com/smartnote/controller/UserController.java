@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor//构造器注入
 public class UserController {
+
      private final UserService userService;
 
      /**

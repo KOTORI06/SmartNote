@@ -29,7 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
                 // 排除不需要认证的接口
                 .excludePathPatterns(
                         "/api/users/login",      // 登录接口
-                        "/api/users/register"    // 注册接口
+                        "/api/users/register",// 注册接口
+                        "/api/shares/public/**"  // 公开分享的笔记
                 );
     }
 }

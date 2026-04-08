@@ -20,6 +20,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class NoteController {
+
     private final NoteService noteService;
 
     /**
