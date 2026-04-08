@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HandleFriendRequest {
 
-    @NotBlank(message = "处理状态不能为空")
+    @NotNull(message = "处理状态不能为空")
     @Min(value = 1, message = "状态值无效")
     @Max(value = 2, message = "状态值无效")
     private Integer status;

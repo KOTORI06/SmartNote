@@ -1,6 +1,7 @@
 package com.smartnote.dto.friend;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FriendRequest {
 
-    @NotBlank(message = "好友ID不能为空")
+    @NotNull(message = "好友ID不能为空")
     private Long friendId;//好友ID
 
     @Size(max = 100, message = "申请备注不能超过100个字符")
