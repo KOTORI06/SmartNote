@@ -22,7 +22,7 @@ public class Note {
     private String title;//笔记标题
     private String content;//笔记正文内容
     private Long folderId;//笔记所属文件夹ID（预留，用于文件夹功能）
-    private Boolean isDeleted;//逻辑删除标志：0-未删除，1-已删除
+    private Integer isDeleted;//逻辑删除标志：0-未删除，1-已删除
     private LocalDateTime createTime;//笔记创建时间
     private LocalDateTime updateTime;//笔记最后修改时间
 }
