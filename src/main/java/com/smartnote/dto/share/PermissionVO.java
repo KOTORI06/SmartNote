@@ -29,8 +29,6 @@ public class PermissionVO {
 
     private Long granteeId;//被授权者ID
 
-    private String granteeName;//被授权者名称
-
     private Integer permissionType;//权限类型：1-可查看，2-可编辑
 
     private LocalDateTime createTime;//权限创建时间
@@ -40,17 +38,15 @@ public class PermissionVO {
      *
      * @param permission 权限实体对象
      * @param noteTitle 笔记标题
-     * @param granteeName 被授权者名称
      * @return 构建好的PermissionVO对象
      */
-    public static PermissionVO fromEntity(NotePermission permission, String noteTitle, String granteeName) {
+    public static PermissionVO fromEntity(NotePermission permission, String noteTitle) {
         return PermissionVO.builder()
                 .id(permission.getId())
                 .noteId(permission.getNoteId())
                 .noteTitle(noteTitle)
                 .granteeType(permission.getGranteeType())
                 .granteeId(permission.getGranteeId())
-                .granteeName(granteeName)
                 .permissionType(permission.getPermissionType())
                 .createTime(permission.getCreateTime())
                 .build();

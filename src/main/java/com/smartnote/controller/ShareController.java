@@ -27,7 +27,7 @@ public class ShareController {
      * 创建/更新分享权限
      * POST /api/shares
      * 为笔记设置或更新分享权限
-     * 支持设置给单个用户、好友分组或所有人
+     * 支持设置给单个用户或所有人
      */
     @PostMapping
     public Result<NotePermission> createOrUpdatePermission(@RequestAttribute Long userId,
@@ -36,20 +36,6 @@ public class ShareController {
                 userId, request.getNoteId(), request.getGranteeType(), request.getPermissionType());
         NotePermission permission = shareService.createOrUpdatePermission(userId, request);
         return Result.success("权限设置成功", permission);
-    }
-
-    /**
-     * 批量设置分享权限
-     * POST /api/shares/batch
-     * 为多个用户或分组批量设置分享权限
-     */
-    @PostMapping("/batch")
-    public Result<List<NotePermission>> batchCreatePermissions(@RequestAttribute Long userId,
-                                                               @Valid @RequestBody BatchPermissionRequest request) {
-        log.info("批量设置分享权限: userId={}, noteId={}, count={}",
-                userId, request.getNoteId(), request.getGranteeIds().size());
-        List<NotePermission> permissions = shareService.batchCreatePermissions(userId, request);
-        return Result.success("批量权限设置成功", permissions);
     }
 
     /**
@@ -81,19 +67,6 @@ public class ShareController {
         return Result.success(sharedNotes);
     }
 
-    /**
-     * 获取我分享出去的笔记
-     * GET /api/shares/shared-by-me
-     * 获取我分享给其他人的所有笔记
-     */
-    @GetMapping("/shared-by-me")
-    public Result<Page<SharedNoteVO>> getNotesSharedByMe(@RequestAttribute Long userId,
-                                                         @RequestParam(defaultValue = "1") Integer page,
-                                                         @RequestParam(defaultValue = "20") Integer size) {
-        log.info("获取我分享的笔记: userId={}, page={}, size={}", userId, page, size);
-        Page<SharedNoteVO> sharedNotes = shareService.getNotesSharedByMe(userId, page, size);
-        return Result.success(sharedNotes);
-    }
 
     /**
      * 删除分享权限

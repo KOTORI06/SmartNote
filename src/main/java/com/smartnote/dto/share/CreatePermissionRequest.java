@@ -21,9 +21,9 @@ public class CreatePermissionRequest {
     @NotNull(message = "被授权者类型不能为空")
     @Min(value = 1, message = "无效的被授权者类型")
     @Max(value = 3, message = "无效的被授权者类型")
-    private Integer granteeType; // 1-用户，2-好友分组，3-所有人
+    private Integer granteeType; // 1-用户，2-所有人
 
-    private Long granteeId; // 当granteeType=1或2时，指定用户ID或分组ID
+    private Long granteeId; // 当granteeType=1，指定用户ID
 
     @NotNull(message = "权限类型不能为空")
     @Min(value = 1, message = "无效的权限类型")
