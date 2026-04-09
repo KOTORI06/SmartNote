@@ -37,6 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public User register(RegisterRequest request) {
+        log.info("用户注册: username={}, email={}", request.getUsername(), request.getEmail());
+
         //检查用户是否已存在
         if(userMapper.selectByUsername(request.getUsername()) != null){
             log.info("用户已存在，用户名：{}", request.getUsername());
@@ -57,6 +59,8 @@ public class UserServiceImpl implements UserService {
     //登录
     @Override
     public LoginResponse login(String account, String password) {
+        log.info("用户登录: account={}", account);
+
         //设置查询条件
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>(); //Lambda方式 字段名错误编译时报错
         wrapper.eq(User::getEmail, account)
@@ -80,6 +84,7 @@ public class UserServiceImpl implements UserService {
     //获取用户信息
     @Override
     public User getUserById(Long userId) {
+        log.info("获取用户信息: userId={}", userId);
 
         User user = userMapper.selectById(userId);
 
@@ -94,6 +99,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public User updateUser(Long userId, UpdateUserRequest request) {
+        log.info("更新用户信息: userId={}", userId);
+
         //获取对应用户
         User user = userMapper.selectById(userId);
         if (user == null) {
@@ -128,6 +135,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public String uploadAvatar(Long userId, MultipartFile file) {
+        log.info("上传头像: userId={}, fileName={}", userId, file.getOriginalFilename());
+
         //文件不为空
         if (file.isEmpty()) {
             throw new BusinessException("文件不能为空");
