@@ -27,3 +27,8 @@ mybatis-plus:
   # 分页插件配置
   pagination:
     max-limit: 500
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: smart-note06
+    region: cn-beijing
