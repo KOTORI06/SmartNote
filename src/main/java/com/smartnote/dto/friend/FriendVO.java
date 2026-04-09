@@ -20,21 +20,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class FriendVO {
 
-    private Long id;
+    private Long id;//好友ID
 
-    private String username;
+    private String username;//好友用户名
 
-    private String email;
+    private String email;//好友邮箱
 
-    private String phone;
+    private String phone;//好友手机号
 
-    private String avatarUrl;
+    private String avatarUrl;//好友头像URL
 
-    private String motto;
+    private String motto;//好友座右铭
 
     private String groupName;
 
-    private LocalDateTime friendSince;
+    private LocalDateTime friendSince;//添加好友时间
 
     /**
      * 截取座右铭（默认50字符）

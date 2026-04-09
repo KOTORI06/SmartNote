@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UpdateGroupRequest {
 
-    @NotBlank(message = "分组名称不能为空")
-    @Size(max = 50, message = "分组名称不能超过50个字符")
-    private String groupName;
+    @NotBlank(message = "分组ID不能为空")
+    private String groupId;
 }

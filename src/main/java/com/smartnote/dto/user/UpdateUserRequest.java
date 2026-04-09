@@ -20,14 +20,6 @@ public class UpdateUserRequest {
     private String username;
 
     /**
-     头像 URL
-     - 用户上传后的头像地址
-     - 可选字段，不传则不更新
-     */
-    @Size(max = 500, message = "头像 URL 过长")
-    private String avatarUrl;
-
-    /**
      座右铭/个人简介
      - 用户个性签名
      - 可选字段，不传则不更新

@@ -30,8 +30,6 @@ public class FriendRequestVO {
 
     private String applyRemark;//申请备注
 
-    private String groupName;//好友分组名称
-
     private Integer status;//申请状态：0-已发送申请，1-已通过，2-已拒绝，3-已删除
 
     private LocalDateTime createTime;//申请创建时间
@@ -69,7 +67,6 @@ public class FriendRequestVO {
                 .username(username)
                 .avatarUrl(avatarUrl)
                 .applyRemark(truncateRemark(relation.getApplyRemark()))
-                .groupName(relation.getGroupName())
                 .status(relation.getStatus())
                 .createTime(relation.getCreateTime())
                 .build();

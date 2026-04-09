@@ -20,7 +20,7 @@ public class FriendRelation {
     private Long id;//关系记录主键
     private Long userId;//主动方用户ID（逻辑外键，关联user.id）
     private Long friendId;//好友用户ID（逻辑外键，关联user.id）
-    private String groupName;//好友分组名称
+    private String groupId;//好友分组ID（逻辑外键，关联group.id）
     private Integer status;//关系状态：0-已发送申请，1-已是好友，2-已拒绝，3-已删除
     private String applyRemark;//好友申请备注
     private LocalDateTime createTime;//记录创建时间

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**@RequiredArgsConstructor
  它会为被标注的类自动生成一个构造函数
@@ -71,10 +72,11 @@ public class UserController {
          User user = userService.getUserById(userId);
          return Result.success(UserResponse.fromEntity(user));
      }
+
      /**
       * 更新用户信息
       * PUT /api/users/me
-      * 更新用户的昵称、头像、座右铭等个人信息
+      * 更新用户的昵称、座右铭等个人信息
       */
      @PutMapping("/me")
      public Result<UserResponse> updateCurrentUser(@RequestAttribute Long userId,
@@ -83,6 +85,20 @@ public class UserController {
          User updatedUser = userService.updateUser(userId, request);
          return Result.success("更新成功", UserResponse.fromEntity(updatedUser));
      }
+
+    /**
+     * 上传头像
+     * POST /api/users/avatar
+     * 上传并更新用户头像
+     */
+    @PostMapping("/avatar")
+    public Result<String> uploadAvatar(@RequestAttribute Long userId,
+                                       @RequestParam("file") MultipartFile file) {
+        log.info("上传头像: userId={}, fileSize={}", userId, file.getOriginalFilename());
+        String avatarUrl = userService.uploadAvatar(userId, file);
+        return Result.success("头像上传成功", avatarUrl);
+    }
+
      /**
       * 修改密码
       * PUT /api/users/password
