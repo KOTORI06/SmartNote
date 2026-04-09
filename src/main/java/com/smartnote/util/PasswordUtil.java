@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
  - 用户登录时验证密码
  - 修改密码时加密新密码
  */
-@Component
 public class PasswordUtil {
 
     /**

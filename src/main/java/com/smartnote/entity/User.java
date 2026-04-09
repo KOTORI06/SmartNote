@@ -44,8 +44,6 @@ public class User {
     private String passwordHash;//加密后的密码
     private String avatarUrl;//头像图片URL地址
     private String motto;//座右铭或个人简介
-    private String extendField;//预留扩展字段（JSON格式）
-    private Boolean isDeleted;//逻辑删除标志：0-未删除，1-已删除
     private LocalDateTime createTime;//记录创建时间
     private LocalDateTime updateTime;//记录最后更新时间
 }
