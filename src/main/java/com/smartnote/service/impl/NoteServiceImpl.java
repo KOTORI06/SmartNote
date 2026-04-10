@@ -6,10 +6,7 @@ import com.smartnote.dto.ai.AiAnalysisVO;
 import com.smartnote.dto.note.*;
 import com.smartnote.entity.*;
 import com.smartnote.exception.BusinessException;
-import com.smartnote.mapper.AiMapper;
-import com.smartnote.mapper.NoteMapper;
-import com.smartnote.mapper.NoteTagMapper;
-import com.smartnote.mapper.NoteViewHistoryMapper;
+import com.smartnote.mapper.*;
 import com.smartnote.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +26,7 @@ public class NoteServiceImpl implements NoteService {
     private final NoteTagMapper noteTagMapper;
     private final NoteViewHistoryMapper viewHistoryMapper;
     private final AiMapper aiMapper;
+    private final ShareMapper shareMapper;
 
     /**
      * 创建新笔记
@@ -134,7 +132,19 @@ public class NoteServiceImpl implements NoteService {
 
         //检查用户权限(实现用户隔离)
         if (!note.getUserId().equals(userId)) {
-            throw new BusinessException("无权访问该笔记");
+            //编写查询条件
+            LambdaQueryWrapper<NotePermission> permWrapper = new LambdaQueryWrapper<>();
+            permWrapper.eq(NotePermission::getNoteId, id)//笔记ID
+                    .and(w -> w.eq(NotePermission::getGranteeType, 2)//所有人分享
+                            .or()
+                            .eq(NotePermission::getGranteeId, userId));//当前用户是被分享用户
+
+            //执行查询
+            NotePermission permission = shareMapper.selectOne(permWrapper);
+            //无权限
+            if (permission == null) {
+                throw new BusinessException("无权访问该笔记");
+            }
         }
 
         //保存笔记访问记录
@@ -287,6 +297,60 @@ public class NoteServiceImpl implements NoteService {
         updateNoteTags(id, tagIds);
 
         return getTagsByNoteId(id);
+    }
+
+    /**
+     * 编辑共享笔记
+     *
+     * @param userId 用户ID
+     * @param id 笔记ID
+     * @param request 更新笔记的请求参数
+     * @return 更新后的笔记对象
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Note editSharedNote(Long userId, Long id, UpdateNoteRequest request) {
+        //用笔记ID查询笔记
+        Note note = noteMapper.selectById(id);
+
+        //检查笔记是否存在
+        if (note == null || note.getIsDeleted() == 1) {
+            throw new BusinessException("笔记不存在");
+        }
+
+        //检查用户权限(实现用户隔离)(不是创建者)
+        if (!note.getUserId().equals(userId)) {
+            //编写查询条件（检查权限）
+            LambdaQueryWrapper<NotePermission> permWrapper = new LambdaQueryWrapper<>();
+            permWrapper.eq(NotePermission::getNoteId, id)//笔记ID
+                    .eq(NotePermission::getPermissionType, 2)//权限类型为编辑
+                    .eq(NotePermission::getGranteeType, 1)//权限类型为用户
+                    .eq(NotePermission::getGranteeId, userId);//被分享者是我
+
+            NotePermission permission = shareMapper.selectOne(permWrapper);
+            //没权限
+            if (permission == null) {
+                throw new BusinessException("无权编辑该笔记");
+            }
+        } else {
+            //创建者
+            throw new BusinessException("所有者请使用完整更新接口");
+        }
+
+        //更新笔记标题
+        if (request.getTitle() != null) {
+            note.setTitle(request.getTitle());
+        }
+        //更新笔记内容
+        if (request.getContent() != null) {
+            note.setContent(request.getContent());
+        }
+        note.setUpdateTime(LocalDateTime.now());
+
+        noteMapper.updateById(note);
+
+        log.info("共享笔记编辑成功: noteId={}, userId={}", id, userId);
+        return note;
     }
 
     //保存笔记标签(只多添加)

@@ -126,4 +126,24 @@ public class NoteController {
         List<TagVO> tags = noteService.manageNoteTags(userId, id, request.getTagIds());
         return Result.success("标签更新成功", tags);
     }
+
+    /**
+     * 编辑共享笔记(只能编辑标题，内容)
+     * PATCH /api/notes/{id}
+     * 编辑共享笔记的标题和内容
+     *
+     * @param userId 用户ID
+     * @param id 笔记ID
+     * @param request 更新请求
+     */
+    @PatchMapping("/{id}")
+    public Result<Note> editSharedNote(@RequestAttribute Long userId,
+                                       @PathVariable Long id,
+                                       @Valid @RequestBody UpdateNoteRequest request) {
+        log.info("编辑共享笔记: userId={}, noteId={}, title={}", userId, id, request.getTitle());
+        Note editedNote = noteService.editSharedNote(userId, id, request);
+        return Result.success("笔记编辑成功", editedNote);
+    }
+
+
 }

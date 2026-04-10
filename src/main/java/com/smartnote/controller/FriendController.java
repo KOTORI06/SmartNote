@@ -148,7 +148,7 @@ public class FriendController {
     /**
      * 删除好友分组
      * DELETE /api/friends/groups/{groupId}
-     * 删除好友分组（需处理组内好友的重新分组）
+     * 删除好友分组（组内好友重新分组到默认分组）
      */
     @DeleteMapping("/groups/{groupId}")
     public Result<String> deleteFriendGroup(@RequestAttribute Long userId,

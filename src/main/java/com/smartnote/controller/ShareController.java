@@ -82,7 +82,7 @@ public class ShareController {
     }
 
     /**
-     * 检查笔记访问权限
+     * 检查当前用户对笔记的访问权限
      * GET /api/shares/check-permission/{noteId}
      * 检查当前用户对指定笔记的访问权限
      */

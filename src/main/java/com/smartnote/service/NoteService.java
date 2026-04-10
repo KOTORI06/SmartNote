@@ -29,4 +29,7 @@ public interface NoteService {
 
     // 添加/删除笔记标签
     List<TagVO> manageNoteTags(Long userId, Long id, List<Long> tagIds);
+
+    // 编辑共享笔记
+    Note editSharedNote(Long userId, Long id, UpdateNoteRequest request);
 }
