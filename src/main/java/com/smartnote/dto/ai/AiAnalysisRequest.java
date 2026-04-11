@@ -1,6 +1,7 @@
 package com.smartnote.dto.ai;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,4 @@ public class AiAnalysisRequest {
     private String analysisType; // SUMMARY, KEY_POINTS, TAGS, TRANSLATION, SENTIMENT等
 
     private String customPrompt; // 自定义Prompt
-
-    private Map<String, Object> parameters; // 额外参数
 }

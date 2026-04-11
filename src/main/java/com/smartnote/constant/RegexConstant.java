@@ -23,4 +23,7 @@ public class RegexConstant {
     public static final String EMAIL_OR_PHONE = "(^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$)|(^1[3-9]\\d{9}$)";
     public static final String EMAIL_OR_PHONE_MESSAGE = "请输入正确的邮箱或手机号";
 
+    //私有构造函数，防止实例化
+    private RegexConstant() {
+    }
 }

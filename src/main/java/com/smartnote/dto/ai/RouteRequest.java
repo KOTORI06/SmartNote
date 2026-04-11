@@ -1,6 +1,7 @@
 package com.smartnote.dto.ai;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +17,8 @@ import java.util.Map;
 public class RouteRequest {
 
     @NotBlank(message = "查询内容不能为空")
+    @Size(max = 2000, message = "查询内容不能超过2000个字符")
     private String query;
 
-    private String context; // 上下文信息
-
-    private Map<String, Object> preferences; // 用户偏好
+    private Long sessionId;
 }

@@ -22,7 +22,5 @@ public class AiAnalysis {
     private String analysisType;//分析类型，如 SUMMARY, KEY_POINTS, TAGS
     private String analysisContent;//AI分析生成的内容结果
     private String promptUsed;//本次分析使用的完整Prompt
-    private String modelUsed;//使用的AI模型名称
-    private String tokenUsage;//本次调用消耗的token情况（JSON格式）
     private LocalDateTime createTime;//分析请求时间
 }
