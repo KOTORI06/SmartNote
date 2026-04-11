@@ -39,7 +39,7 @@ public class NoteController {
     /**
      * 分页查询笔记列表
      * GET /api/notes
-     * 支持按标题搜索、按标签筛选、分页查询和排序
+     * 支持按标题模糊搜索、按标签筛选、分页查询和排序
      * 默认最新的笔记在前
      */
     @GetMapping

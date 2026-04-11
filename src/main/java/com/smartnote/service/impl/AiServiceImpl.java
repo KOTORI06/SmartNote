@@ -13,6 +13,7 @@ import com.smartnote.mapper.ChatMessageMapper;
 import com.smartnote.mapper.ChatSessionMapper;
 import com.smartnote.mapper.NoteMapper;
 import com.smartnote.service.AiService;
+import com.smartnote.util.AiTools;
 import com.smartnote.util.PdfUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -178,6 +179,8 @@ public class AiServiceImpl implements AiService {
     @Override
     public void executeIntelligentRouteStream(Long userId, RouteRequest request, SseEmitter emitter) {
         try {
+            //设置当前用户ID（用于AI自调用后续查询会话）
+            AiTools.setCurrentUser(userId);
             Long sessionId;
 
             // 如果请求中指定了会话ID，验证其有效性
@@ -288,6 +291,9 @@ public class AiServiceImpl implements AiService {
                 //异常关闭 SSE 链接
                 emitter.completeWithError(ex);
             }
+        } finally {
+            //最后清除当前用户
+            AiTools.clearCurrentUser();
         }
     }
 
