@@ -18,7 +18,7 @@ public class RouteRequest {
 
     @NotBlank(message = "查询内容不能为空")
     @Size(max = 2000, message = "查询内容不能超过2000个字符")
-    private String query;
+    private String query;//查询内容
 
-    private Long sessionId;
+    private Long sessionId;//会话id
 }
