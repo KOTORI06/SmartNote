@@ -34,7 +34,12 @@ public class AiController {
                                        @RequestParam("file") MultipartFile file) {
         log.info("发起 PDF 流式分析: userId={}, fileName={}", userId, file.getOriginalFilename());
 
-        if (!"application/pdf".equals(file.getContentType())) {
+        String originalFilename = file.getOriginalFilename();
+        boolean isPdf = "application/pdf".equals(file.getContentType()) ||
+                (originalFilename != null && originalFilename.toLowerCase().endsWith(".pdf"));
+
+        //!"application/pdf".equals(file.getContentType())
+        if (!isPdf) {
             throw new BusinessException("仅支持 PDF 格式文件");
         }
 
@@ -74,8 +79,10 @@ public class AiController {
      * 流式智能路由对话接口
      * POST /api/ai/chat/completions
      *
+     * 先调用智能路由接口，根据意图进行分类，然后调用对应的接口进行处理
+     *
      * 实战经验说明：
-     * 2. 意图识别：后端自动判断是“笔记分析”、“闲聊”还是“代码辅助”。
+     * 2. 意图识别：后端自动判断是“笔记分析”，“闲聊”，“相关知识搜索”
      * 3. 流式响应：使用 SSE (Server-Sent Events) 实现打字机效果。
      * 4. 统一入口：前端无需维护多个 AI 接口，全部走这里。
      */

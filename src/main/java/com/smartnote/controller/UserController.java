@@ -54,11 +54,6 @@ public class UserController {
          LoginResponse loginResult = userService.login(request.getAccount(), request.getPassword());
          return Result.success("登录成功", loginResult);
      }
-     /**
-      * 获取当前用户信息
-      * GET /api/users/me
-      * 从JWT令牌中解析用户ID，返回完整的用户信息
-      */
 
      /**@RequestAttribute
       获取拦截器/过滤器存入 request 的数据
@@ -66,6 +61,12 @@ public class UserController {
       如果参数名不一致，需显式指定
       @RequestAttribute("userId") Long uid
       */
+
+     /**
+     * 获取当前用户信息
+     * GET /api/users/me
+     * 从JWT令牌中解析用户ID，返回完整的用户信息
+     */
      @GetMapping("/me")
      public Result<UserResponse> getCurrentUser(@RequestAttribute Long userId) {
          log.info("获取当前用户信息: userId={}", userId);
@@ -121,6 +122,7 @@ public class UserController {
                                                    @RequestParam(defaultValue = "1") Integer page,
                                                    @RequestParam(defaultValue = "20") Integer size) {
          log.info("搜索用户: keyword={}, page={}, size={}", keyword, page, size);
+
          Page<User> userPage = userService.searchUsers(keyword, page, size);
 
          Page<UserResponse> responsePage = new Page<>(page, size, userPage.getTotal());

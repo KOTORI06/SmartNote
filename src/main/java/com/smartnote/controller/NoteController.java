@@ -145,5 +145,44 @@ public class NoteController {
         return Result.success("笔记编辑成功", editedNote);
     }
 
+    /**
+     * 创建新标签
+     * POST /api/notes/tags
+     * 创建一个新的标签
+     */
+    @PostMapping("/tags")
+    public Result<TagVO> createTag(@RequestAttribute Long userId,
+                                   @Valid @RequestBody CreateTagRequest request) {
+        log.info("创建标签: userId={}, tagName={}", userId, request.getName());
+        TagVO tag = noteService.createTag(userId, request);
+        return Result.success("标签创建成功", tag);
+    }
+
+    /**
+     * 删除标签
+     * DELETE /api/notes/tags/{id}
+     * 删除标签并连带删除关联表中的记录
+     */
+    @DeleteMapping("/tags/{id}")
+    public Result<String> deleteTag(@RequestAttribute Long userId,
+                                    @PathVariable Long id) {
+        log.info("删除标签: userId={}, tagId={}", userId, id);
+        noteService.deleteTag(userId, id);
+        return Result.success("标签删除成功");
+    }
+
+    /**
+     * 查询标签列表
+     * GET /api/notes/tags
+     * 获取标签列表供用户选择添加，支持分页
+     */
+    @GetMapping("/tags")
+    public Result<Page<TagVO>> getTags(@RequestAttribute Long userId,
+                                       @RequestParam(defaultValue = "1") Integer page,
+                                       @RequestParam(defaultValue = "20") Integer size) {
+        log.info("查询标签列表: userId={}, page={}, size={}", userId, page, size);
+        Page<TagVO> tags = noteService.getTags(userId, page, size);
+        return Result.success(tags);
+    }
 
 }

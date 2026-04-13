@@ -38,9 +38,13 @@ public class AiServiceImpl implements AiService {
     private final AiMapper aiMapper;
     private final NoteMapper noteMapper;
     private final ChatClient chatClient;
+    private final ChatClient simpleChatClient;
+    private final AiTools aiTools;
 
     /**
      * 执行流式笔记分析的核心业务逻辑
+     *  使用简单的 ChatClient 进行流式 AI 笔记分析
+     * （因为笔记内容已经在提示词拼接了）
      *
      * 1. 验证笔记存在性和用户权限
      * 2. 检查是否已有相同类型的分析记录（决定新增还是更新）
@@ -89,7 +93,7 @@ public class AiServiceImpl implements AiService {
             StringBuilder fullContent = new StringBuilder();
 
             // 使用 Spring AI 的 ChatClient 发起流式请求
-            chatClient.prompt()//创建一个提示词构建器对象
+            simpleChatClient.prompt()//创建一个提示词构建器对象
                     .user(prompt)//设置用户消息
                     .stream()//启用流式响应模式
                     .content()//从 AI 响应中提取纯文本内容
@@ -165,6 +169,10 @@ public class AiServiceImpl implements AiService {
     /**
      * 执行流式智能路由对话的核心业务逻辑
      *
+     * 先调用一次智能路由对话，获取用户意图（调用简单配置的 simpleChatClient）
+     * 再根据用户意图，调用智能路由对话（调用配置了工具类的 ChatClient）
+     * (当前版本有BUG,注解识别失败，先用简单版了)
+     *
      * 1. 获取或创建会话
      * 2. 保存用户消息到数据库
      * 3. 获取历史消息构建上下文
@@ -236,7 +244,7 @@ public class AiServiceImpl implements AiService {
             //准备接收流式数据
             StringBuilder fullContent = new StringBuilder();
             //调用 AI 模型进行流式对话
-            chatClient.prompt()//创建一个 Prompt 构造器
+            simpleChatClient.prompt()//创建一个 Prompt 构造器
                     .user(prompt)//用户消息（提示词）
                     .stream()//设置为流式对话
                     .content()//提取纯文本内容
@@ -413,12 +421,13 @@ public class AiServiceImpl implements AiService {
         if (!session.getUserId().equals(userId)) {
             throw new BusinessException("无权删除该会话");
         }
-        // 执行逻辑删除
-        session.setIsDeleted(1);
-        // 更新会话的更新时间为当前时间
-        session.setUpdateTime(LocalDateTime.now());
-        // 更新会话记录
-        chatSessionMapper.updateById(session);
+        // 物理删除会话下的所有消息(去掉孤儿消息)
+        LambdaQueryWrapper<ChatMessage> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(ChatMessage::getSessionId, sessionId);
+        chatMessageMapper.delete(wrapper);
+
+        // 逻辑删除会话
+        chatSessionMapper.deleteById(sessionId);
     }
 
     /**
@@ -532,6 +541,7 @@ public class AiServiceImpl implements AiService {
 
     /**
      * 流式分析 PDF 文件并创建会话
+     * 不需要调用AI工具类，使用简单配置的ChatClient
      *
      * 1. 使用 PdfUtils 提取 PDF 文本
      * 2. 基于文件名创建新会话
@@ -573,7 +583,7 @@ public class AiServiceImpl implements AiService {
             // 使用 StringBuilder 收集完整的总结内容
             StringBuilder fullSummary = new StringBuilder();
             // 调用 Spring AI 的 ChatClient 进行流式对话
-            chatClient.prompt()//创建一个新的提示请求构建器
+            simpleChatClient.prompt()//创建一个新的提示请求构建器
                       .user(prompt)//设置用户消息（提示词）
                       .stream()//启用流式模式，返回 Flux 响应式流
                       .content()//只提取文本内容部分
@@ -738,7 +748,7 @@ public class AiServiceImpl implements AiService {
         String intentPrompt = AiPromptConstant.INTENT_RECOGNITION_TEMPLATE;
 
         try {
-            String intent = chatClient.prompt()
+            String intent = simpleChatClient.prompt()
                     .user(intentPrompt)//设置用户输入
                     .call()//阻塞式输出获取短文本
                     .content();//获取生成的回答文本内容

@@ -11,4 +11,7 @@ public interface NoteTagMapper extends BaseMapper<NoteTag> {
 
     @Delete("DELETE FROM note_tag WHERE note_id = #{noteId}")
     int deleteByNoteId(Long noteId);
+
+    @Delete("DELETE FROM note_tag WHERE tag_id = #{tagId}")
+    int deleteByTagId(Long tagId);
 }

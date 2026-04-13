@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -64,7 +66,7 @@ public class AiTools {
      * @param keyword 搜索关键词（支持标题和内容模糊匹配）
      * @return 格式化的笔记列表文本（便于 AI 理解和展示）
      */
-    @Tool(description = "根据关键词搜索用户的笔记，支持标题和内容的模糊匹配")
+    @Tool(name = "searchNotesByKeyword", description = "根据关键词搜索用户的笔记，支持标题和内容的模糊匹配")
     public String searchNotesByKeyword(@ToolParam(description = "关键词") String keyword) {
         // 从 ThreadLocal 获取当前用户ID
         Long userId = getCurrentUserId();

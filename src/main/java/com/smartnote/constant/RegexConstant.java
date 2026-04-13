@@ -12,7 +12,7 @@ public class RegexConstant {
     public static final String EMAIL_MESSAGE = "邮箱格式不正确";
 
     //用户名：4-20位，支持字母、数字、下划线、中文
-    public static final String USERNAME = "^[a-zA-Z0-9_\\u4e00-\\u9fa5]{4,20}$";
+    public static final String USERNAME = "^[a-zA-Z0-9_\\u4e00-\\u9fa5]{4,20}$";//\u4e00-\u9fa5（Unicode 范围，匹配所有常用中文字符）
     public static final String USERNAME_MESSAGE = "用户名格式不正确（4-20位字母、数字、下划线或中文）";
 
     //密码：8-20位，必须包含字母和数字，可选特殊字符

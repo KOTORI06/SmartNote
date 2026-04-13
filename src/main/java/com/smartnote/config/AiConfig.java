@@ -19,10 +19,22 @@ public class AiConfig {
      *
      * @return 配置好的 ChatClient 实例
      */
+    //有点无了
     @Bean
     public ChatClient chatClient(OpenAiChatModel model,AiTools aiTools) {
         return ChatClient.builder(model)
                 .defaultTools(aiTools)
+                .build();
+    }
+
+    /**
+     * 配置 ChatClient，不启用工具调用
+     *
+     * @return 配置好的 ChatClient 实例
+     */
+    @Bean
+    public ChatClient simpleChatClient(OpenAiChatModel model) {
+        return ChatClient.builder(model)
                 .build();
     }
 

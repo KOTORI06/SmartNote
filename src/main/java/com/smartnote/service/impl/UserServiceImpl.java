@@ -147,9 +147,9 @@ public class UserServiceImpl implements UserService {
             throw new BusinessException("文件大小不能超过5MB");
         }
 
-        //文件类型
+        //文件类型（ || !contentType.startsWith("image/")）
         String contentType = file.getContentType();
-        if (contentType == null || !contentType.startsWith("image/")) {
+        if (contentType == null) {
             throw new BusinessException("只支持图片文件");
         }
 
@@ -211,11 +211,11 @@ public class UserServiceImpl implements UserService {
         //编辑查询条件
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
         //前后都模糊关键字
-        wrapper.like(User::getUsername, keyword)
+        wrapper.like(User::getUsername, keyword)//用户名
                 .or()
-                .like(User::getEmail, keyword)
+                .like(User::getEmail, keyword)//邮箱
                 .or()
-                .like(User::getPhone, keyword)
+                .like(User::getPhone, keyword)//手机号
                 .orderByDesc(User::getCreateTime);
 
         return userMapper.selectPage(userPage, wrapper);

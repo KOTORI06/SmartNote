@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("group")
+@TableName("friend_group")
 public class Group {
 
     @TableId(type = IdType.AUTO)

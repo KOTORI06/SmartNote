@@ -27,6 +27,7 @@ public class NoteServiceImpl implements NoteService {
     private final NoteViewHistoryMapper viewHistoryMapper;
     private final AiMapper aiMapper;
     private final ShareMapper shareMapper;
+    private final TagMapper tagMapper;
 
     /**
      * 创建新笔记
@@ -228,9 +229,7 @@ public class NoteServiceImpl implements NoteService {
             throw new BusinessException("无权删除该笔记");
         }
 
-        note.setIsDeleted(1);
-        note.setUpdateTime(LocalDateTime.now());
-        noteMapper.updateById(note);
+        noteMapper.deleteById(id);
 
         log.info("笔记删除成功: noteId={}, userId={}", id, userId);
     }
@@ -353,6 +352,84 @@ public class NoteServiceImpl implements NoteService {
         return note;
     }
 
+    /**
+     * 创建新标签
+     *
+     * @param userId 用户ID
+     * @param request 创建标签的请求参数
+     * @return 创建成功的标签VO对象
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public TagVO createTag(Long userId, CreateTagRequest request) {
+        LambdaQueryWrapper<Tag> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Tag::getName, request.getName());
+
+        Tag existingTag = tagMapper.selectOne(wrapper);
+        if (existingTag != null) {
+            throw new BusinessException("标签名称已存在");
+        }
+
+        Tag tag = new Tag();
+        tag.setName(request.getName());
+        tag.setCreateTime(LocalDateTime.now());
+
+        tagMapper.insert(tag);
+
+        log.info("标签创建成功: tagId={}, tagName={}", tag.getId(), request.getName());
+        return TagVO.fromEntity(tag);
+    }
+
+    /**
+     * 删除标签
+     *
+     * @param userId 用户ID
+     * @param id 标签ID
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteTag(Long userId, Long id) {
+        Tag tag = tagMapper.selectById(id);
+
+        if (tag == null) {
+            throw new BusinessException("标签不存在");
+        }
+
+        noteTagMapper.deleteByTagId(id);
+
+        tagMapper.deleteById(id);
+
+        log.info("标签删除成功: tagId={}, tagName={}", id, tag.getName());
+    }
+
+    /**
+     * 查询标签列表
+     *
+     * @param userId 用户ID
+     * @param page 页码
+     * @param size 页大小
+     * @return 标签分页列表（按创建时间降序）
+     */
+    @Override
+    public Page<TagVO> getTags(Long userId, Integer page, Integer size) {
+        Page<Tag> tagPage = new Page<>(page, size);
+
+        LambdaQueryWrapper<Tag> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByDesc(Tag::getCreateTime);
+
+        Page<Tag> resultPage = tagMapper.selectPage(tagPage, wrapper);
+
+        List<TagVO> voList = resultPage.getRecords().stream()
+                .map(TagVO::fromEntity)
+                .toList();
+
+        Page<TagVO> voPage = new Page<>(resultPage.getCurrent(), resultPage.getSize(), resultPage.getTotal());
+        voPage.setRecords(voList);
+
+        return voPage;
+    }
+
+
     //保存笔记标签(只多添加)
     private void saveNoteTags(Long noteId, List<Long> tagIds) {
         //增强for循环
@@ -407,11 +484,25 @@ public class NoteServiceImpl implements NoteService {
 
     //保存笔记访问记录
     private void saveViewHistory(Long userId, Long noteId) {
-        NoteViewHistory history = new NoteViewHistory();
-        history.setUserId(userId);
-        history.setNoteId(noteId);
-        history.setViewTime(LocalDateTime.now());
-        viewHistoryMapper.insert(history);
+        //先查询是否已存在
+        LambdaQueryWrapper<NoteViewHistory> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(NoteViewHistory::getUserId, userId)
+                .eq(NoteViewHistory::getNoteId, noteId);
+
+        NoteViewHistory existing = viewHistoryMapper.selectOne(wrapper);
+
+        if (existing != null) {
+            //更新访问时间
+            existing.setViewTime(LocalDateTime.now());
+            viewHistoryMapper.updateById(existing);
+        } else {
+            //新增记录
+            NoteViewHistory history = new NoteViewHistory();
+            history.setUserId(userId);
+            history.setNoteId(noteId);
+            history.setViewTime(LocalDateTime.now());
+            viewHistoryMapper.insert(history);
+        }
     }
 
     //根据标签ID查询笔记

@@ -10,9 +10,9 @@ spring:
     openai:
       base-url: https://dashscope.aliyuncs.com/compatible-mode
       api-key: ${OPENAI_API_KEY}
-      multimodal:
+      chat:
         options:
-            model: qwen3.6-plus
+            model: qwen-plus
 
 mybatis-plus:
   configuration:

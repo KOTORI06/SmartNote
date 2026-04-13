@@ -19,7 +19,7 @@ public interface NoteService {
     NoteDetailVO getNoteDetail(Long userId, Long id);
 
     // 更新笔记
-    Note updateNote(Long userId, Long id, @Valid UpdateNoteRequest request);
+    Note updateNote(Long userId, Long id, UpdateNoteRequest request);
 
     // 删除笔记
     void deleteNote(Long userId, Long id);
@@ -32,4 +32,14 @@ public interface NoteService {
 
     // 编辑共享笔记
     Note editSharedNote(Long userId, Long id, UpdateNoteRequest request);
+
+    // 创建标签
+    TagVO createTag(Long userId, CreateTagRequest request);
+
+    // 删除标签
+    void deleteTag(Long userId, Long id);
+
+    // 查询标签列表
+    Page<TagVO> getTags(Long userId, Integer page, Integer size);
+
 }

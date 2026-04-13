@@ -48,7 +48,13 @@ public class PdfUtils {
         }
         // 检查文件类型是否为 PDF
         String contentType = file.getContentType();
-        if (!"application/pdf".equals(contentType)) {
+        String originalFilename = file.getOriginalFilename();
+
+        boolean isPdf = "application/pdf".equals(contentType) ||
+                (originalFilename != null && originalFilename.toLowerCase().endsWith(".pdf"));
+
+        //!"application/pdf".equals(contentType)
+        if (!isPdf) {
             throw new BusinessException("仅支持 PDF 格式文件");
         }
 

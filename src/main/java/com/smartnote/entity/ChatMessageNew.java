@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * 好有聊天消息实体类
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

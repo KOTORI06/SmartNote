@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UpdateNoteRequest {
 
-    @NotBlank(message = "笔记标题不能为空")
+    @NotBlank(message = "标题不能为空")
     @Size(max = 200, message = "标题长度不能超过200个字符")
     private String title;//笔记标题（可选）
 
