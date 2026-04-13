@@ -19,5 +19,6 @@ public class Tag {
     @TableId(type = IdType.AUTO)
     private Long id;//标签唯一主键
     private String name;//标签名称
+    private Long userId;//标签所属用户
     private LocalDateTime createTime;//标签创建时间
 }

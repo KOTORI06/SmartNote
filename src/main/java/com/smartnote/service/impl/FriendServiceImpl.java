@@ -56,13 +56,8 @@ public class FriendServiceImpl implements FriendService {
 
         //编写查询条件（不能重复添加好友）
         LambdaQueryWrapper<FriendRelation> wrapper = new LambdaQueryWrapper<>();
-        wrapper.and(w -> w.eq(FriendRelation::getUserId, userId)//当前用户
-                        .eq(FriendRelation::getFriendId, request.getFriendId())//目标用户
-                        .or()
-                        .eq(FriendRelation::getUserId, request.getFriendId())//目标用户
-                        .eq(FriendRelation::getFriendId, userId))//当前用户
-
-                .ne(FriendRelation::getStatus, 3);//状态不等于已删除（保留好友历史）
+        wrapper.eq(FriendRelation::getUserId, userId)//当前用户
+                .eq(FriendRelation::getFriendId, request.getFriendId());//目标用户
 
         //执行查询
         FriendRelation existingRelation = friendMapper.selectOne(wrapper);
@@ -74,8 +69,8 @@ public class FriendServiceImpl implements FriendService {
             } else if (existingRelation.getStatus() == 0) {
                 //已发送过好友申请
                 throw new BusinessException("好友申请已发送，请等待对方处理");
-            } else if (existingRelation.getStatus() == 2) {
-                //拒绝过
+            } else if (existingRelation.getStatus() == 2|| existingRelation.getStatus() == 3) {
+                //拒绝过或者删除过
                 existingRelation.setStatus(0);
                 existingRelation.setApplyRemark(request.getApplyRemark());
                 existingRelation.setUpdateTime(LocalDateTime.now());
@@ -111,7 +106,7 @@ public class FriendServiceImpl implements FriendService {
     public void handleFriendRequest(Long userId, Long requestId, Integer status) {
         log.info("处理好友申请: userId={}, requestId={}, status={}", userId, requestId, status);
 
-        //查询目标申请条
+        //查询目标申请条(对方主动)
         FriendRelation relation = friendMapper.selectById(requestId);
         //不存在
         if (relation == null) {
@@ -131,20 +126,41 @@ public class FriendServiceImpl implements FriendService {
         //处理
         if (status == 1) {
             //同意（添加双向记录）
-            relation.setStatus(1);
+            relation.setStatus(1);//改状态
             relation.setUpdateTime(LocalDateTime.now());
             friendMapper.updateById(relation);
 
-            //创建双向记录
-            FriendRelation reverseRelation = new FriendRelation();
-            reverseRelation.setUserId(userId);//当前用户
-            reverseRelation.setFriendId(relation.getUserId());//对方用户
-            reverseRelation.setGroupId("1");//默认分组
-            reverseRelation.setStatus(1);//状态已同意
-            reverseRelation.setApplyRemark(relation.getApplyRemark());//备注
-            reverseRelation.setCreateTime(LocalDateTime.now());//创建时间
-            reverseRelation.setUpdateTime(LocalDateTime.now());//更新时间
-            friendMapper.insert(reverseRelation);
+            //编写查询条件(我主动的)
+            LambdaQueryWrapper<FriendRelation> wrapper = new LambdaQueryWrapper<>();
+            wrapper.eq(FriendRelation::getUserId, userId)//当前用户
+                    .eq(FriendRelation::getFriendId, relation.getUserId());//对方用户
+
+            //执行查询
+            FriendRelation reverseRelation = friendMapper.selectOne(wrapper);
+
+            if (reverseRelation != null) {
+                //先前添加过
+                if (reverseRelation.getStatus() == 2 || reverseRelation.getStatus() == 3) {
+                    reverseRelation.setStatus(1);//改状态
+                    reverseRelation.setGroupId("1");//默认
+                    reverseRelation.setApplyRemark(relation.getApplyRemark());//备注
+                    reverseRelation.setUpdateTime(LocalDateTime.now());//更新时间
+                    //更新数据库
+                    friendMapper.updateById(reverseRelation);
+                }
+            } else {
+                //创建双向记录
+                FriendRelation newReverseRelation = new FriendRelation();
+                newReverseRelation.setUserId(userId);//当前用户
+                newReverseRelation.setFriendId(relation.getUserId());//对方用户
+                newReverseRelation.setGroupId("1");//默认分组
+                newReverseRelation.setStatus(1);//状态已同意
+                newReverseRelation.setApplyRemark(relation.getApplyRemark());//备注
+                newReverseRelation.setCreateTime(LocalDateTime.now());//创建时间
+                newReverseRelation.setUpdateTime(LocalDateTime.now());//更新时间
+                //插入数据库
+                friendMapper.insert(newReverseRelation);
+            }
 
             log.info("同意好友申请并创建双向记录: requestId={}", requestId);
         } else if (status == 2) {

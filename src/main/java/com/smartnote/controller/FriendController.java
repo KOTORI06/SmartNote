@@ -63,7 +63,7 @@ public class FriendController {
      */
     @GetMapping("/requests/received")
     public Result<Page<FriendRequestVO>> getReceivedFriendRequests(@RequestAttribute Long userId,
-                                                                   @RequestParam(required = false) Integer status,
+                                                                   @RequestParam(defaultValue = "0") Integer status,
                                                                    @RequestParam(defaultValue = "desc") String sortOrder,
                                                                    @RequestParam(defaultValue = "1") Integer page,
                                                                    @RequestParam(defaultValue = "20") Integer size) {

@@ -362,20 +362,26 @@ public class NoteServiceImpl implements NoteService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public TagVO createTag(Long userId, CreateTagRequest request) {
+        //编写查询条件
         LambdaQueryWrapper<Tag> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(Tag::getName, request.getName());
+        wrapper.eq(Tag::getName, request.getName());//标签名称
 
+        //检查标签名称是否已存在
         Tag existingTag = tagMapper.selectOne(wrapper);
         if (existingTag != null) {
             throw new BusinessException("标签名称已存在");
         }
 
+        // 创建标签
         Tag tag = new Tag();
-        tag.setName(request.getName());
-        tag.setCreateTime(LocalDateTime.now());
+        tag.setUserId(userId);//用户ID
+        tag.setName(request.getName());//标签名称
+        tag.setCreateTime(LocalDateTime.now());//创建时间
 
+        //保存标签到数据库
         tagMapper.insert(tag);
 
+        //返回标签VO对象
         log.info("标签创建成功: tagId={}, tagName={}", tag.getId(), request.getName());
         return TagVO.fromEntity(tag);
     }
@@ -389,10 +395,16 @@ public class NoteServiceImpl implements NoteService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteTag(Long userId, Long id) {
+        //用标签ID查询标签
         Tag tag = tagMapper.selectById(id);
 
+        //检查标签是否存在
         if (tag == null) {
             throw new BusinessException("标签不存在");
+        }
+
+        if (!tag.getUserId().equals(userId)) {
+            throw new BusinessException("无权删除该标签");
         }
 
         noteTagMapper.deleteByTagId(id);
@@ -415,7 +427,8 @@ public class NoteServiceImpl implements NoteService {
         Page<Tag> tagPage = new Page<>(page, size);
 
         LambdaQueryWrapper<Tag> wrapper = new LambdaQueryWrapper<>();
-        wrapper.orderByDesc(Tag::getCreateTime);
+        wrapper.eq(Tag::getUserId, userId)
+                .orderByDesc(Tag::getCreateTime);
 
         Page<Tag> resultPage = tagMapper.selectPage(tagPage, wrapper);
 
