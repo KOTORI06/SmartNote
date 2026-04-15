@@ -223,7 +223,7 @@ public class AiServiceImpl implements AiService {
                 newSession.setUpdateTime(LocalDateTime.now());//设置更新时间
                 newSession.setIsDeleted(0);//设置未删除
 
-                // 插入数据库
+                // 会话插入数据库
                 chatSessionMapper.insert(newSession);
                 sessionId = newSession.getId();//获取新会话ID
 

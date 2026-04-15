@@ -19,7 +19,6 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/api/ai")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AiController {
 
@@ -54,6 +53,8 @@ public class AiController {
     /**
      * 统一的流式笔记分析接口
      * POST /api/ai/notes/{noteId}/analysis/stream
+     *
+     * 分析类型：SUMMARY，TAGS，KEY_POINTS
      *
      * 功能整合：
      * 1. 自动处理“首次分析”与“重新分析”逻辑（后端根据是否存在旧记录判断）。

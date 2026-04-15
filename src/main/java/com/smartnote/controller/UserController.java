@@ -26,7 +26,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Validated
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor//构造器注入
 public class UserController {
 

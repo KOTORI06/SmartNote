@@ -17,7 +17,6 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/api/shares")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class ShareController {
 
