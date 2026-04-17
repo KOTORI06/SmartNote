@@ -184,4 +184,30 @@ public class NoteController {
         return Result.success(tags);
     }
 
+    /**
+     * 获取已删除笔记列表（回收站）
+     * GET /api/notes/deleted
+     * 获取用户已删除的笔记列表，支持分页
+     */
+    @GetMapping("/deleted")
+    public Result<Page<NoteVO>> getDeletedNotes(@RequestAttribute Long userId,
+                                                @RequestParam(defaultValue = "1") Integer page,
+                                                @RequestParam(defaultValue = "20") Integer size) {
+        log.info("获取已删除笔记列表: userId={}, page={}, size={}", userId, page, size);
+        Page<NoteVO> deletedNotes = noteService.getDeletedNotes(userId, page, size);
+        return Result.success(deletedNotes);
+    }
+
+    /**
+     * 复原笔记
+     * PUT /api/notes/{id}/restore
+     * 将已删除的笔记恢复到正常状态
+     */
+    @PutMapping("/{id}/restore")
+    public Result<String> restoreNote(@RequestAttribute Long userId,
+                                      @PathVariable Long id) {
+        log.info("复原笔记: userId={}, noteId={}", userId, id);
+        noteService.restoreNote(userId, id);
+        return Result.success("笔记复原成功");
+    }
 }

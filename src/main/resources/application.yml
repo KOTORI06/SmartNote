@@ -2,7 +2,7 @@ spring:
   application:
     name: smart_note
   datasource:
-    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/smart_note?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8}
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/smart_note?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8&allowPublicKeyRetrieval=true}
     username: ${DB_USER:root}
     password: ${DB_PASSWORD:123456}
     driver-class-name: com.mysql.cj.jdbc.Driver

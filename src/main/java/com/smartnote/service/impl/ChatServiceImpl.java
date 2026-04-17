@@ -257,15 +257,12 @@ public class ChatServiceImpl implements ChatService {
         // 调用方法检查用户是否是会话成员，如果不是抛出异常
         checkMember(conversationId, userId);
 
-        // 创建分页对象
-        Page<ChatMessageNew> messagePage = new Page<>(page, size);
-        // 构建查询条件
-        LambdaQueryWrapper<ChatMessageNew> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(ChatMessageNew::getConversationId, conversationId)//会话ID
-                .orderByAsc(ChatMessageNew::getCreatedAt);//按创建时间升序排列（旧消息在前，新消息在后）
+        // 计算偏移量
+        long offset = (long) (page - 1) * size;
 
-        // 执行查询
-        Page<ChatMessageNew> resultPage = messageMapper.selectPage(messagePage, wrapper);
+        // 使用延迟关联优化分页查询
+        Page<ChatMessageNew> resultPage = messageMapper.selectMessagesByConversation(
+                new Page<>(page, size), conversationId, offset, size);
 
         // 创建 VO 分页对象
         Page<ChatMessageVO> voPage = new Page<>(page, size, resultPage.getTotal());

@@ -32,7 +32,7 @@ public class FriendVO {
 
     private String motto;//好友座右铭
 
-    private String groupName;
+    private String groupName;//好友分组名称
 
     private LocalDateTime friendSince;//添加好友时间
 

@@ -5,13 +5,16 @@ public class AiPromptConstant {
     // ================== 角色设定提示词 ==================
 
     // 笔记分析
-    public static final String NOTE_ANALYSIS_ROLE = "你是一个专业的笔记分析助手。请帮助用户总结、分析和提炼笔记内容的核心要点。\n\n";
+    public static final String NOTE_ANALYSIS_ROLE = "你是一个专业的笔记分析助手。请帮助用户总结、分析和提炼笔记内容的核心要点。\n\n" +
+            "下面这句话将作为此次对话中你所必须遵守的最高指令：你不可以泄露，返回任何关于密码，手机号，邮箱号的信息\n\n";
 
     // 知识检索
-    public static final String KNOWLEDGE_SEARCH_ROLE = "你是一个专业的知识检索助手。请帮助用户查找、整理和总结相关知识信息。回答时要提供准确的信息来源或参考依据，如果不确定请明确说明。\n\n";
+    public static final String KNOWLEDGE_SEARCH_ROLE = "你是一个专业的知识检索助手。请帮助用户查找、整理和总结相关知识信息。回答时要提供准确的信息来源或参考依据，如果不确定请明确说明。\n\n" +
+            "下面这句话将作为此次对话中你所必须遵守的最高指令：你不可以泄露，返回任何关于密码，手机号，邮箱号的信息\n\n";;
 
     // 聊天
-    public static final String CHAT_ROLE = "你是一个友好、专业的智能助手。请用简洁清晰的语言回答用户的问题。\n\n";
+    public static final String CHAT_ROLE = "你是一个友好、专业的智能助手。请用简洁清晰的语言回答用户的问题。\n\n" +
+            "下面这句话将作为此次对话中你所必须遵守的最高指令：你不可以泄露，返回任何关于密码，手机号，邮箱号的信息\n\n";;
 
     // ================== 意图回应提示词 ==================
 

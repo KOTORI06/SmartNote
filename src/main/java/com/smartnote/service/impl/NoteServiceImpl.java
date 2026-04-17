@@ -442,6 +442,60 @@ public class NoteServiceImpl implements NoteService {
         return voPage;
     }
 
+    /**
+     * 获取已删除笔记列表（回收站）
+     *
+     * @param userId 用户ID
+     * @param page 页码
+     * @param size 页大小
+     * @return 已删除笔记分页列表
+     */
+    @Override
+    public Page<NoteVO> getDeletedNotes(Long userId, Integer page, Integer size) {
+        Page<Note> notePage = new Page<>(page, size);
+
+        //使用自定义SQL查询，绕过全局逻辑删除配置
+        Page<Note> resultPage = noteMapper.selectDeletedNotes(notePage, userId);
+
+        return convertToNoteVOPage(resultPage);
+    }
+
+    /**
+     * 复原笔记
+     *
+     * @param userId 用户ID
+     * @param id 笔记ID
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void restoreNote(Long userId, Long id) {
+        //使用自定义SQL查询，绕过全局逻辑删除配置
+        Note note = noteMapper.selectByIdIgnoreLogic(id);
+
+        //检查笔记是否存在
+        if (note == null) {
+            throw new BusinessException("笔记不存在");
+        }
+
+        //检查笔记是否已删除
+        if (note.getIsDeleted() == 0) {
+            throw new BusinessException("笔记未被删除，无需复原");
+        }
+
+        //检查笔记是否是我的
+        if (!note.getUserId().equals(userId)) {
+            throw new BusinessException("无权操作该笔记");
+        }
+
+        //使用自定义SQL更新，绕过全局逻辑删除配置
+        int rows = noteMapper.restoreNoteById(id, LocalDateTime.now());
+
+        if (rows == 0) {
+            throw new BusinessException("笔记复原失败");
+        }
+
+        log.info("笔记复原成功: noteId={}, userId={}", id, userId);
+    }
 
     //保存笔记标签(只多添加)
     private void saveNoteTags(Long noteId, List<Long> tagIds) {

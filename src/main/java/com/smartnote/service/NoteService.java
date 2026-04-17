@@ -42,4 +42,11 @@ public interface NoteService {
     // 查询标签列表
     Page<TagVO> getTags(Long userId, Integer page, Integer size);
 
+    // 获取已删除笔记列表（回收站）
+    Page<NoteVO> getDeletedNotes(Long userId, Integer page, Integer size);
+
+    // 复原笔记
+    void restoreNote(Long userId, Long id);
+
+
 }
