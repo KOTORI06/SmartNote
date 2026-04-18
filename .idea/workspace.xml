@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9b59281b-cef8-4dc5-b972-34a95f3a13ba" name="更改" comment="补了全部的每日进度文档">
+      <change beforePath="$PROJECT_DIR$/ daily-progress.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/SmartNoteApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/config/AiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/config/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/config/WebSocketConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/constant/AiPromptConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/constant/FriendStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/constant/RegexConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/constant/ShareType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/controller/AiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/controller/ChatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/controller/FriendController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/controller/NoteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/controller/ShareController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/ai/AiAnalysisRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/ai/AiAnalysisVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/ai/ChatMessageVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/ai/ChatSessionVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/ai/CreateSessionRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/ai/RouteRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/chat/ChatMessageVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/chat/ConversationVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/chat/CreateConversationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/friend/CreateGroupRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/friend/FriendRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/friend/FriendRequestVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/friend/FriendVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/friend/HandleFriendRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/friend/UpdateGroupRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/CreateNoteRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/CreateTagRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/NoteDetailVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/NoteVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/NoteViewHistoryVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/TagManagementRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/TagVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/note/UpdateNoteRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/share/CreatePermissionRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/share/PermissionCheckVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/share/PermissionVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/share/PublicNoteVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/share/SharedNoteVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/user/ChangePasswordRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/user/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/user/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/user/RegisterRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/user/UpdateUserRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/dto/user/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/AiAnalysis.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/ChatConversation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/ChatConversationMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/ChatMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/ChatMessageNew.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/ChatSession.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/FriendRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/Group.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/Note.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/NotePermission.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/NoteTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/NoteViewHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/Tag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/exception/BusinessException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/interceptor/JwtInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/AiMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/ChatConversationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/ChatConversationMemberMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/ChatMessageMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/ChatMessageNewMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/ChatSessionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/FriendMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/GroupMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/NoteMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/NoteTagMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/NoteViewHistoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/ShareMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/TagMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/AiService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/ChatService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/FriendService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/NoteService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/ShareService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/impl/AiServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/impl/ChatServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/impl/FriendServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/impl/NoteServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/impl/ShareServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/AiTools.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/AliyunOSSOperator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/PasswordUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/PdfUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/util/UserContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartnote/ws/ChatWebSocket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/smartnote/SmartNoteApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KOTORI06&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KOTORI06/SmartNote.git&quot;,
+    &quot;accountId&quot;: &quot;83f5d7aa-8970-4040-8f90-d56138a52cc6&quot;
+  }
+}</component>
+  <component name="HttpClientOnboardingState">{
+  &quot;isOnboardingCommentShown&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="3ByZ68gUwRCUzUU6I1G7dJCOamj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SmartNoteApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LEGION/IdeaProjects/SmartNote/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;通义灵码&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LEGION\IdeaProjects\SmartNote\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartNoteApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="DATABASE_URL" value="jdbc:mysql://localhost:3306/smart_note?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8&amp;allowPublicKeyRetrieval=true" />
+        <env name="DB_PASSWORD" value="123456" />
+        <env name="DB_USER" value="root" />
+        <env name="OPENAI_API_KEY" value="sk-36c331b9051a4b668ed4be8897a5b5cf" />
+      </envs>
+      <module name="SmartNote" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.smartnote.SmartNoteApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.138" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.138" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="9b59281b-cef8-4dc5-b972-34a95f3a13ba" name="更改" comment="" />
+      <created>1775463096072</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775463096072</updated>
+      <workItem from="1775463097253" duration="13425000" />
+      <workItem from="1775625592504" duration="33738000" />
+      <workItem from="1775721922444" duration="117939000" />
+      <workItem from="1775988109427" duration="3804000" />
+      <workItem from="1775992675268" duration="1961000" />
+      <workItem from="1775994661370" duration="64337000" />
+      <workItem from="1776264202655" duration="9545000" />
+      <workItem from="1776317650585" duration="313000" />
+      <workItem from="1776318346817" duration="52830000" />
+    </task>
+    <task id="LOCAL-00001" summary="创建好了实体类，统一的HTTP响应体结构，全局异常处理器，业务异常类，配置文件等">
+      <option name="closed" value="true" />
+      <created>1775482787127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775482787127</updated>
+    </task>
+    <task id="LOCAL-00002" summary="改了文件格式">
+      <option name="closed" value="true" />
+      <created>1775484334724</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775484334724</updated>
+    </task>
+    <task id="LOCAL-00003" summary="改了文件格式">
+      <option name="closed" value="true" />
+      <created>1775484351288</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775484351288</updated>
+    </task>
+    <task id="LOCAL-00004" summary="改了文件格式">
+      <option name="closed" value="true" />
+      <created>1775484362830</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775484362830</updated>
+    </task>
+    <task id="LOCAL-00005" summary="添加了正则校验，正则表达式常量类，还有校验用的依赖">
+      <option name="closed" value="true" />
+      <created>1775488503189</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775488503189</updated>
+    </task>
+    <task id="LOCAL-00006" summary="添加了Controller接口和JWT令牌工具类">
+      <option name="closed" value="true" />
+      <created>1775492107119</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1775492107119</updated>
+    </task>
+    <task id="LOCAL-00007" summary="添加了token鉴权拦截器，用户上下文工具类，拦截器配置类">
+      <option name="closed" value="true" />
+      <created>1775540464127</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775540464127</updated>
+    </task>
+    <task id="LOCAL-00008" summary="添加了密码相关工具类">
+      <option name="closed" value="true" />
+      <created>1775549949853</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1775549949853</updated>
+    </task>
+    <task id="LOCAL-00009" summary="添加了用户controller层的方法和DTO">
+      <option name="closed" value="true" />
+      <created>1775577934135</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1775577934135</updated>
+    </task>
+    <task id="LOCAL-00010" summary="添加了笔记controller层的方法和DTO">
+      <option name="closed" value="true" />
+      <created>1775650829680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1775650829680</updated>
+    </task>
+    <task id="LOCAL-00011" summary="添加了好友controller层的方法和DTO还有VO">
+      <option name="closed" value="true" />
+      <created>1775655421472</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1775655421472</updated>
+    </task>
+    <task id="LOCAL-00012" summary="添加了分享controller层的方法和DTO还有VO，删除了一些多余类">
+      <option name="closed" value="true" />
+      <created>1775658994505</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1775658994505</updated>
+    </task>
+    <task id="LOCAL-00013" summary="添加了AIcontroller层的方法和DTO">
+      <option name="closed" value="true" />
+      <created>1775660395551</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1775660395551</updated>
+    </task>
+    <task id="LOCAL-00014" summary="添加和改进了friendcontroller层的方法和DTO,和一些user的方法">
+      <option name="closed" value="true" />
+      <created>1775713437438</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1775713437438</updated>
+    </task>
+    <task id="LOCAL-00015" summary="添加了文件上传阿里云的工具类">
+      <option name="closed" value="true" />
+      <created>1775717671061</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1775717671061</updated>
+    </task>
+    <task id="LOCAL-00016" summary="用户方法全部完成">
+      <option name="closed" value="true" />
+      <created>1775728691426</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1775728691426</updated>
+    </task>
+    <task id="LOCAL-00017" summary="用户方法全部完成">
+      <option name="closed" value="true" />
+      <created>1775728772614</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1775728772614</updated>
+    </task>
+    <task id="LOCAL-00018" summary="用户方法全部完成,添加了一些mapper">
+      <option name="closed" value="true" />
+      <created>1775734147051</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1775734147051</updated>
+    </task>
+    <task id="LOCAL-00019" summary="笔记方法全部完成,添加了一些mapper，修改了一下note的实体类">
+      <option name="closed" value="true" />
+      <created>1775742237630</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1775742237630</updated>
+    </task>
+    <task id="LOCAL-00020" summary="分享方法全部完成,添加了一些mapper，常量类">
+      <option name="closed" value="true" />
+      <created>1775751717850</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1775751717850</updated>
+    </task>
+    <task id="LOCAL-00021" summary="好友方法全部完成,删除了一些没用的类，添加了一点笔记方法，添加了受限的编辑方法">
+      <option name="closed" value="true" />
+      <created>1775808539898</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1775808539898</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Ai方法全部完成,重新设计全部方法，添加了新的DTO和VO，pdf工具类，提示词常量类，添加所需依赖">
+      <option name="closed" value="true" />
+      <created>1775900578453</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1775900578453</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Ai方法全部完成,重新设计全部方法，添加了新的DTO和VO，pdf工具类，提示词常量类，添加所需依赖">
+      <option name="closed" value="true" />
+      <created>1775900769906</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1775900769906</updated>
+    </task>
+    <task id="LOCAL-00024" summary="添加了Ai工具类，工具类配置类，更改了Ai配置类">
+      <option name="closed" value="true" />
+      <created>1775906373982</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1775906373982</updated>
+    </task>
+    <task id="LOCAL-00025" summary="删除了一些不必要的类，添加了好友聊天功能">
+      <option name="closed" value="true" />
+      <created>1775970018413</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1775970018413</updated>
+    </task>
+    <task id="LOCAL-00026" summary="第一次测试接口，修改了一些方法逻辑错误，添加了缺失的标签相关功能，放行了Spring Security全部请求用JWT拦截器验证（密码加密用到了这个依赖，Spring自配置没办法只能自己关了），Ai工具类的注解似乎因为版本问题无法识别，换了3,4个方案也没解决，查spring AI文档，现在配置的版本似乎是里程碑版并不稳定，没办法解决了，也不敢降版本，好像低版本Spring AI,Spring Boot版本又不适配了">
+      <option name="closed" value="true" />
+      <created>1776051421564</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1776051421564</updated>
+    </task>
+    <task id="LOCAL-00027" summary="修改了添加，删除好友的一些面对复杂情况的业务逻辑，添加了标签的归属字段用于用户隔离">
+      <option name="closed" value="true" />
+      <created>1776055913704</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1776055913704</updated>
+    </task>
+    <task id="LOCAL-00028" summary="解决了跨域访问，预检请求的错误拦截判断问题，将所有的请求交给JWT拦截器处理">
+      <option name="closed" value="true" />
+      <created>1776251986067</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1776251986067</updated>
+    </task>
+    <task id="LOCAL-00029" summary="优化了一些东西，">
+      <option name="closed" value="true" />
+      <created>1776406154808</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1776406154808</updated>
+    </task>
+    <task id="LOCAL-00030" summary="补了全部的每日进度文档">
+      <option name="closed" value="true" />
+      <created>1776442164525</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1776442164525</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加了正则校验，正则表达式常量类，还有校验用的依赖" />
+    <MESSAGE value="添加了Controller接口和JWT令牌工具类" />
+    <MESSAGE value="添加了token鉴权拦截器，用户上下文工具类，拦截器配置类" />
+    <MESSAGE value="添加了密码相关工具类" />
+    <MESSAGE value="添加了用户controller层的方法和DTO" />
+    <MESSAGE value="添加了笔记controller层的方法和DTO" />
+    <MESSAGE value="添加了好友controller层的方法和DTO还有VO" />
+    <MESSAGE value="添加了分享controller层的方法和DTO还有VO，删除了一些多余类" />
+    <MESSAGE value="添加了AIcontroller层的方法和DTO" />
+    <MESSAGE value="添加和改进了friendcontroller层的方法和DTO,和一些user的方法" />
+    <MESSAGE value="添加了文件上传阿里云的工具类" />
+    <MESSAGE value="用户方法全部完成" />
+    <MESSAGE value="用户方法全部完成,添加了一些mapper" />
+    <MESSAGE value="笔记方法全部完成,添加了一些mapper，修改了一下note的实体类" />
+    <MESSAGE value="分享方法全部完成,添加了一些mapper，常量类" />
+    <MESSAGE value="好友方法全部完成,删除了一些没用的类，添加了一点笔记方法，添加了受限的编辑方法" />
+    <MESSAGE value="Ai方法全部完成,重新设计全部方法，添加了新的DTO和VO，pdf工具类，提示词常量类，添加所需依赖" />
+    <MESSAGE value="添加了Ai工具类，工具类配置类，更改了Ai配置类" />
+    <MESSAGE value="删除了一些不必要的类，添加了好友聊天功能" />
+    <MESSAGE value="第一次测试接口，修改了一些方法逻辑错误，添加了缺失的标签相关功能，放行了Spring Security全部请求用JWT拦截器验证（密码加密用到了这个依赖，Spring自配置没办法只能自己关了），Ai工具类的注解似乎因为版本问题无法识别，换了3,4个方案也没解决，查spring AI文档，现在配置的版本似乎是里程碑版并不稳定，没办法解决了，也不敢降版本，好像低版本Spring AI,Spring Boot版本又不适配了" />
+    <MESSAGE value="修改了添加，删除好友的一些面对复杂情况的业务逻辑，添加了标签的归属字段用于用户隔离" />
+    <MESSAGE value="解决了跨域访问，预检请求的错误拦截判断问题，将所有的请求交给JWT拦截器处理" />
+    <MESSAGE value="优化了一些东西" />
+    <MESSAGE value="优化了一些东西，" />
+    <MESSAGE value="补了全部的每日进度文档" />
+    <option name="LAST_COMMIT_MESSAGE" value="补了全部的每日进度文档" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/smartnote/service/FriendService.java</url>
+          <line>29</line>
+          <properties class="com.smartnote.service.FriendService" method="handleFriendRequest">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch canBePaused="false" expression="" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
