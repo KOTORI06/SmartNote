@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: smart_note
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/smart_note?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8&allowPublicKeyRetrieval=true}
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  ai:
+    openai:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+            model: qwen-plus
+
+mybatis-plus:
+  configuration:
+    # 开启驼峰命名转换
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #自动扫描该包下所有类，并将类名（首字母小写）作为别名
+  type-aliases-package: com.smartnote.entity
+  #指定 MyBatis Mapper XML 文件的位置
+  #classpath: - 表示从类路径下查找（即 src/main/resources 目录）
+  #mapper/ - resources 下的 mapper 文件夹
+  #*.xml - 通配符，匹配该目录下所有 .xml 文件
+  mapper-locations: classpath:mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  # 分页插件配置
+  pagination:
+    max-limit: 500
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: smart-note06
+    region: cn-beijing
